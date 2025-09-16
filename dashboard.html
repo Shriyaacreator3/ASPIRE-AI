@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AspirAI Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>aspirAI 🚀</h1>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <!-- Dashboard main content -->
+  <main class="dashboard">
+    <div class="card">📝 Quizzes</div>
+    <div class="card">📊 Projects</div>
+    <div class="card">🧠 AI Assistant</div>
+    <div class="card">📅 Schedule</div>
+    <div class="card">⚙ Settings</div>
+  </main>
+
+  <script>
+    function logout() {
+      window.location.href = "index.html"; // back to login
+    }
+  </script>
+</body>
+</html>>
