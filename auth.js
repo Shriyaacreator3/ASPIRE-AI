@@ -1,5 +1,5 @@
-import { auth } from "firebase";
-import { createUserwithEmailandPassword } from "firebase/auth";
+import { auth ,googleProvider} from "firebase";
+import { createUserwithEmailandPassword,signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 
 export const auth = () => {
@@ -10,6 +10,13 @@ export const auth = () => {
     const signIn = async ()=> {
         try{
         await createUserwithEmailandPassword(auth, email, password);
+        }catch(err){
+            console.error(err);
+        }
+    };
+    const signInWithGoogle = async ()=> {
+        try{
+        await signInWithPopup(auth,googleProvider);
         }catch(err){
             console.error(err);
         }
