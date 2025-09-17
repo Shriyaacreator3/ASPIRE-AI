@@ -5,9 +5,14 @@ import { useState } from "react";
 export const auth = () => {
     const [email,setEmail]=useState("");
     const [password, setPassword]=useState("");
+    
 
     const signIn = async ()=> {
+        try{
         await createUserwithEmailandPassword(auth, email, password);
+        }catch(err){
+            console.error(err);
+        }
     };
 
     <div class="login-container">
