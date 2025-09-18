@@ -38,6 +38,25 @@ body {
   letter-spacing: 2px;
   text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
 }
+.signup-container {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 330px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Heading */
+.signup-container h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
+}
+
 
 /* Inputs */
 input {
