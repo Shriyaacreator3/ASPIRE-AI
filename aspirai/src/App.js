@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Login} from "./auth";
 import { Signup} from "./Signup";
 import {Home} from "./home";
+import { Quizzes } from "./quizzes";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" element={<Login />} />  
         <Route path="/signup" element={<Signup />} />  
         <Route path="/home" element={<Home />} />
+        <Route path="/quizzes" element={<Quizzes/>} />
       </Routes>
     </BrowserRouter>
   );
