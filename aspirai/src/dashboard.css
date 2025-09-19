@@ -1,13 +1,11 @@
-/* ===== Background (same style as login) ===== */
+/* ===== Background ===== */
 body {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(-45deg, #ff6ec7, #6a5acd, #00c6ff, #ff8c00);
   background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
+  animation: gradientShift 12s ease infinite;
   color: white;
 }
 
@@ -25,32 +23,35 @@ body {
   align-items: center;
   padding: 20px 40px;
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .navbar h1 {
-  font-size: 1.8rem;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
 }
 
 .navbar button {
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
   border: none;
   background: linear-gradient(135deg, #43cea2, #185a9d);
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
 }
 
 .navbar button:hover {
   transform: scale(1.05);
   background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
-/* ===== Dashboard cards ===== */
+/* ===== Dashboard ===== */
 .dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -58,19 +59,57 @@ body {
   padding: 40px;
 }
 
+/* ===== Cards ===== */
 .card {
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
   padding: 40px 20px;
   border-radius: 20px;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+
+.card:hover::before {
+  top: -20%;
+  left: -20%;
 }
 
 .card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.2);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: iconBounce 1.2s infinite alternate;
+}
+
+@keyframes iconBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
 }
