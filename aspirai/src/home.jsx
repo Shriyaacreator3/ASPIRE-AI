@@ -14,7 +14,7 @@ export function Home() {
         <div className="card">📊 Mood space</div>
         <div className="card"onClick={() => navigate("/chatbox")}>🧠 AI Assistant</div>
         <div className="card">📅 Journal entry</div>
-        <div className="card">⚙ User settings</div>
+        <div className="card" onClick={() => navigate("/Settings")}>⚙ User settings</div>
       </main>
     </div>
   );

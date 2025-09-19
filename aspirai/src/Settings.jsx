@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./settings.css";
 import XPTracker from "./XPTracker"; // reuse the XPTracker component
 
-export default function Settings() {
+export const Settings=()=> {
   const [form, setForm] = useState({
     username: "",
     age: "",

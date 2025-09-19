@@ -5,6 +5,7 @@ import {Home} from "./home";
 import { Quizzes } from "./quizzes";
 import { ProfileSetup} from "./profile";
 import { ChatBox } from "./ChatBox";
+import { Settings } from "./Settings";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/quizzes" element={<Quizzes/>} />
         <Route path="/chatbox" element={<ChatBox/>}/>
+        <Route path="/settings" element={<Settings/>}/>
       </Routes>
     </BrowserRouter>
   );
