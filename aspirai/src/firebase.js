@@ -1,4 +1,3 @@
-
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth,GoogleAuthProvider } from "firebase/auth";
@@ -18,6 +17,7 @@ const firebaseConfig = {
   appId: "1:1029208870388:web:c2a87bf74f635815e9fda1",
   measurementId: "G-LR2HGPS05Y"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

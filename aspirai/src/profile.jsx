@@ -36,7 +36,7 @@ export const ProfileSetup = () => {
   return (
     <div className="profile-setup-container">
       <h2>Complete Your Profile 🚀</h2>
-      <p>We’d love to know you better!</p>
+      <p>We would love to know you better!</p>
 
       <input
         type="text"

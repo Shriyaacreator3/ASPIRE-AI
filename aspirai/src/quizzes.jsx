@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react";
-import "./Quizzes.css";
+import "./quizstyle.css";
 
 export const Quizzes = ({ role }) => {
   const [questions, setQuestions] = useState([]);
@@ -44,7 +43,7 @@ export const Quizzes = ({ role }) => {
     <div className="quiz-container">
       <h2 className="quiz-title">Quizzes for {role} 🚀</h2>
 
-      {/* Progress Bar */}
+      
       {total > 0 && (
         <div className="quiz-progress">
           <div
