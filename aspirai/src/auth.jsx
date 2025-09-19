@@ -25,7 +25,7 @@ export const Login = () => {
                 return;
                 };
 
-            navigate("/home");
+            navigate("/profile-setup");
          }
 
 
@@ -47,7 +47,7 @@ export const Login = () => {
                 return;
       }
 
-      navigate("/home");
+      navigate("/profile-setup");
     }
     catch(err){
         alert(err.message);

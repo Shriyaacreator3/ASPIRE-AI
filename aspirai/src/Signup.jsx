@@ -22,7 +22,7 @@ export const Signup = () => {
         name : "user",
         role : "general"})
 
-      navigate("/home");
+      navigate("/profile-setup");
     } catch (err) {
       alert(err.message);
     }
@@ -40,7 +40,7 @@ export const Signup = () => {
         role : "general"})
 
 
-      navigate("/home");
+      navigate("/profile-setup");
     } catch (err) {
       alert(err.message);
     }

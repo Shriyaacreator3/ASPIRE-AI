@@ -9,7 +9,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />  
-        <Route path="/signup" element={<Signup />} />  
+        <Route path="/signup" element={<Signup />} /> 
+        <Route path= "/profile-setup" element={<ProfileSetup />} />
         <Route path="/home" element={<Home />} />
         <Route path="/quizzes" element={<Quizzes/>} />
       </Routes>
