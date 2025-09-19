@@ -1,9 +1,11 @@
 
 import "./style.css";
-import { auth } from "./firebase";
-import {signInWithEmailAndPassword,sendPasswordResetEmail} from "firebase/auth";
+import { auth, database, googleProvider } from "./firebase";
+import {signInWithEmailAndPassword, signInWithPopup} from "firebase/auth";
+
+import { doc, setDoc, getDoc} from "firebase/firestore";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
     const [email,setEmail]=useState("");
@@ -12,41 +14,60 @@ export const Login = () => {
     const navigate = useNavigate();
 
     
-    const login=async()=>{
+    const loginWithEmail=async()=>{
+        
         try{
-            await signInWithEmailAndPassword(auth,email,password);
+            const userCred =await signInWithEmailAndPassword(auth,email,password);
+            const userDocRef = doc(database, "users", userCred.user.uid);
+            const userSnap = await getDoc(userDocRef);
+            if (!userSnap.exists()) {
+                alert("User not found. Please register first!");
+                return;
+                };
+
             navigate("/home");
-        }
+         }
+
+
         catch(err){
             alert(err.message);
         }
-    };
+
+    }
+    const loginWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+
+      const userDocRef = doc(database, "users", user.uid);
+      const userSnap = await getDoc(userDocRef);
+
+      if (!userSnap.exists()) {
+        alert("User not found. Please register first!");
+                return;
+      }
+
+      navigate("/home");
+    }
+    catch(err){
+        alert(err.message);
+    }
      
-    const resetPassword=async()={
-        if(!email){
-        alert("Please enter your email first");
-        return;
-        }
-        try{
-            await sendPasswordResetEmail(auth,email);
-            alert("Password reset email sent!");
-        }
-        catch(err){
-            alert(err.message);
-        }
-    };
- 
+  }
   return(
     <div className="login-container">
     <h2>aspirAI 🚀</h2>
     
       <input type="email" id="email" placeholder="✉ Email" required onChange={(e)=>setEmail(e.target.value)}/>
       <input type="password" id="password" placeholder="🔑 Password" required onChange={(e)=>setPassword(e.target.value)} />
-      <button type="submit" onClick={login}>Login</button>
+      <button type="submit" onClick={ loginWithEmail }>Login</button>
+      <button type="submit" onClick={loginWithGoogle}>Login with Google</button>
         
-      <button type="submit" onClick={resetPassword}>Forgot Password</button>
-      <p> Don't have an account?<Link to="/signup">Sign up here</Link>Link></p>
+       <div>
+        Don't have an account?<Link to="/signup" >Sign up here</Link>
+        </div> 
+    
     </div>
   );
 
-}
+};

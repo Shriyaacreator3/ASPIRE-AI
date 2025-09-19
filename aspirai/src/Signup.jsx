@@ -1,6 +1,7 @@
 import "./style.css";
-import { auth, googleProvider } from "./firebase";
+import { auth, database, googleProvider } from "./firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { doc, setDoc} from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -12,8 +13,16 @@ export const Signup = () => {
 
   const signup = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/home");
+      const userCred=await createUserWithEmailAndPassword(auth, email, password);
+
+      
+        await setDoc(doc(database,"users",userCred.user.uid),{
+        email : email,
+        currentXP : 0,
+        name : "user",
+        role : "general"})
+
+      navigate("/profile");
     } catch (err) {
       alert(err.message);
     }
@@ -21,8 +30,17 @@ export const Signup = () => {
 
   const signupWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/home");
+      const result=await signInWithPopup(auth, googleProvider);
+
+       
+        await setDoc(doc(database,"users",result.user.uid),{
+        email : result.user.email,
+        currentXP : 0,
+        name : "user",
+        role : "general"})
+
+
+      navigate("/profile");
     } catch (err) {
       alert(err.message);
     }
