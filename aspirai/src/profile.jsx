@@ -1,3 +1,4 @@
+import "./style.css";
 import { auth, database } from "./firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
