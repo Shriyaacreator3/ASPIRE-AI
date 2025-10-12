@@ -1,0 +1,213 @@
+/* journal.css - Glassmorphism style */
+.journal-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 40px 30px;
+  width: 900px;
+  max-width: 95%;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* NEW: Container to align title and back link */
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px;
+}
+
+.journal-title {
+  font-size: 2.2rem;
+  margin: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  flex-grow: 1; /* Allows title to take space */
+  text-align: center; /* Center title within its container */
+}
+
+/* NEW: Style for the "Back to Journal" link */
+.nav-link {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.journal-textarea {
+  width: 90%;
+  height: 300px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  margin: 20px;
+  resize: vertical;
+}
+
+.journal-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.journal-textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.01);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.journal-save-btn {
+  width: 90%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+  margin-bottom: 30px;
+}
+
+.journal-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(67, 206, 162, 0.6);
+}
+
+.recent-entries-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.journal-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+.journal-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.journal-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.entry-content {
+  flex-grow: 1;
+}
+
+.journal-entry-text {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.journal-entry-date {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color: #ddd;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* NEW: Delete Button Style */
+.delete-btn {
+  background: rgba(255, 82, 82, 0.2);
+  border: 1px solid rgba(255, 82, 82, 0.5);
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 20px;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  transition: background 0.3s, transform 0.2s;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 82, 82, 0.6);
+  transform: scale(1.1);
+}
+
+.journal-no-entries {
+  font-weight: 500;
+  text-align: center;
+  color: #f0f0f0;
+  padding: 20px;
+}
+
+/* NEW: Container for the "View All" button */
+.view-all-container {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+}
+.back-container {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+}
+.nav-link-btn {
+  display: inline-block;
+  padding:15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.nav-link-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .journal-container {
+    width: 95%;
+    padding: 25px 20px;
+  }
+  .journal-title {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,105 @@
+/* General layout */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #282c34;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Main content: dashboard + LoFi zone side by side */
+.main-content {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  flex: 1; /* fills remaining space */
+}
+
+/* Dashboard grid */
+.dashboard {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Cards styling */
+.card {
+  background-color: #f3f3f3;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* LoFi zone */
+.lofi-zone {
+  flex: 1;
+  /* Use your GIF link here */
+  background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWpmOWx1eHVweXdpMzdjZzZrOHJseDJoZjNtMDJhb2c5ZDNkNXppeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1hXY6iNdTFpTW4je85/giphy.gif') center/cover no-repeat;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* player at bottom */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* MiniLoFi player inside the LoFi zone */
+.lofi-player {
+  background-color: rgba(0,0,0,0.6); /* semi-transparent overlay */
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* LoFi player buttons */
+.lofi-player button {
+  margin: 0 0.3rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.lofi-player button:hover {
+  background-color: #666;
+}
+
+/* Responsive: stack LoFi zone below dashboard on smaller screens */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .lofi-zone {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+

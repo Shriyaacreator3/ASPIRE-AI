@@ -1,0 +1,58 @@
+/* Container for the player */
+.lofi-player {
+  position: sticky;       /* Sticks at the bottom */
+  bottom: 0;
+  width: 100%;
+  background-color: #1e1e1e; /* Dark lo-fi vibe */
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+  font-family: "Arial", sans-serif;
+}
+
+/* Heading inside player */
+.lofi-player h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Current song / mood info */
+.lofi-player p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Buttons styling */
+.lofi-player button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.9rem;
+}
+
+.lofi-player button:hover {
+  background-color: #666;
+}
+
+/* Responsive: stack buttons on smaller screens */
+@media (max-width: 600px) {
+  .lofi-player {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+
+  .lofi-player button {
+    width: 100%;
+  }
+}

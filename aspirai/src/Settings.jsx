@@ -107,6 +107,7 @@ export const Settings=()=> {
 
         <button type="submit">Save Profile</button>
       </form>
+  
 
       {message && <p className="settings-message">{message}</p>}
     </div>

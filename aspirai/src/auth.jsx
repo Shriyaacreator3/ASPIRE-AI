@@ -63,9 +63,9 @@ export const Login = () => {
       <button type="submit" onClick={ loginWithEmail }>Login</button>
       <button type="submit" onClick={loginWithGoogle}>Login with Google</button>
         
-       <div>
+       <p>
         Don't have an account?<Link to="/signup" >Sign up here</Link>
-        </div> 
+        </p> 
     
     </div>
   );

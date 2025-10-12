@@ -9,7 +9,6 @@ body {
   color: white;
 }
 
-/* Gradient animation */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -51,19 +50,26 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
+/* ===== Main Content ===== */
+.main-content {
+  display: flex;
+  gap: 20px; /* space between dashboard and LoFi zone */
+  padding: 20px 40px;
+}
+
 /* ===== Dashboard ===== */
 .dashboard {
+  flex: 3; /* takes more space */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
-  padding: 40px;
+  gap: 20px;
 }
 
 /* ===== Cards ===== */
 .card {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(18px);
-  padding: 40px 20px;
+  padding: 30px 20px;
   border-radius: 20px;
   text-align: center;
   font-size: 1.3rem;
@@ -112,4 +118,59 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   text-shadow: 0 0 6px rgba(255,255,255,0.5);
+}
+
+/* ===== LoFi Zone ===== */
+.lofi-zone {
+  flex: 1; /* smaller than dashboard */
+  min-width: 250px; /* ensures it doesn’t shrink too small */
+  max-width: 350px; /* optional */
+  background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWpmOWx1eHVweXdpMzdjZzZrOHJseDJoZjNtMDJhb2c5ZDNkNXppeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1hXY6iNdTFpTW4je85/giphy.gif') center/cover no-repeat;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* player at bottom */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* MiniLoFi player inside the LoFi zone */
+.lofi-player {
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lofi-player button {
+  margin: 0 0.3rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.lofi-player button:hover {
+  background-color: #666;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .lofi-zone {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+    margin-top: 20px;
+  }
 }
