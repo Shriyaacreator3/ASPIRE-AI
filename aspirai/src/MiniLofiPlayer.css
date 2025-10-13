@@ -1,58 +1,84 @@
-/* Container for the player */
-.lofi-player {
-  position: sticky;       /* Sticks at the bottom */
-  bottom: 0;
+
+.lofi-page-container {
   width: 100%;
-  background-color: #1e1e1e; /* Dark lo-fi vibe */
-  color: #fff;
-  padding: 1rem 2rem;
+  min-height: 100vh;
+  background: url('https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyYnZlMnpza2ZoNXJoeWpqbXptMzVzcnkxZ3o0YWtpNnh0YzNpeHNoaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H62NM1ab7wzMXURdoi/giphy.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+.arrow-back{
+  display: inline-block;
+  padding:15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.lofi-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
+
+  /* Flexbox layout to space out the info and controls */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
-  font-family: "Arial", sans-serif;
+  flex-wrap: wrap; /* Allows stacking on small screens */
+  padding: 1rem 2rem;
+  gap: 1rem;
 }
 
-/* Heading inside player */
-.lofi-player h3 {
-  margin: 0;
+.song-info h3 {
+  margin: 0 0 5px 0;
   font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Current song / mood info */
-.lofi-player p {
+.song-info p {
   margin: 0;
   font-size: 0.9rem;
-  opacity: 0.8;
+  color: #e0e0e0;
 }
-
-/* Buttons styling */
-.lofi-player button {
-  background-color: #444;
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Creates space between the buttons */
+}
+.player-controls button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px; /* Pill shape */
   cursor: pointer;
-  transition: background 0.3s;
   font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
 }
 
-.lofi-player button:hover {
-  background-color: #666;
+.player-controls button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Responsive: stack buttons on smaller screens */
 @media (max-width: 600px) {
   .lofi-player {
-    flex-direction: column;
+    flex-direction: column; /* Stack info on top of controls */
+    justify-content: center;
     text-align: center;
-    gap: 0.8rem;
-  }
-
-  .lofi-player button {
-    width: 100%;
   }
 }

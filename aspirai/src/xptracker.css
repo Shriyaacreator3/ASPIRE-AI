@@ -9,6 +9,7 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   position: relative;
   animation: fadeIn 0.8s ease-in-out;
+  width: 100%;
 }
 
 .xp-bar {

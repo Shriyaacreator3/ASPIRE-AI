@@ -1,7 +1,7 @@
+// journalEntries.jsx
 import "./journal.css"; // Import the CSS file
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// Firebase imports (use same exports you use elsewhere)
 import { auth, database } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import {
@@ -12,6 +12,14 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+
+const MOOD_EMOJI = {
+  Happy: "😀",
+  Good: "🙂",
+  Neutral: "😐",
+  Sad: "😢",
+  Angry: "😡",
+};
 
 export default function Entries() {
   const [entries, setEntries] = useState([]);
@@ -41,6 +49,7 @@ export default function Entries() {
           return {
             id: d.id,
             text: data.text || "",
+            mood: data.mood || "Neutral",
             createdAt:
               data.createdAt && typeof data.createdAt.toDate === "function"
                 ? data.createdAt.toDate().toLocaleString()
@@ -79,20 +88,19 @@ export default function Entries() {
       </div>
 
       <div className="journal-entries">
-        {entries.length === 0 && (
-          <p className="journal-no-entries">You have no saved entries.</p>
-        )}
+        {entries.length === 0 && <p className="journal-no-entries">You have no saved entries.</p>}
         {entries.map((entry) => (
           <div key={entry.id} className="journal-entry">
             <div className="entry-content">
+              <div className="entry-mood-row">
+                <span className="entry-mood-emoji" aria-hidden>
+                  {MOOD_EMOJI[entry.mood] || "😐"}
+                </span>
+              </div>
               <p className="journal-entry-text">{entry.text}</p>
               <p className="journal-entry-date">{entry.createdAt}</p>
             </div>
-            <button
-              onClick={() => handleDelete(entry.id)}
-              className="delete-btn"
-              type="button"
-            >
+            <button onClick={() => handleDelete(entry.id)} className="delete-btn" type="button">
               🗑
             </button>
           </div>

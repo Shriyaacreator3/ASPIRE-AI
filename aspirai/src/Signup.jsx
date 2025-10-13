@@ -47,6 +47,7 @@ export const Signup = () => {
   };
 
   return (
+    <div className="centered-page-container"> 
     <div className="signup-container">
       <h2>Create Account 🚀</h2>
       <input type="email" placeholder="✉ Email" onChange={(e)=>setEmail(e.target.value)}/>
@@ -55,6 +56,7 @@ export const Signup = () => {
       <button onClick={signupWithGoogle}>Sign Up with Google</button>
   
       <p> Already have an account? <Link to="/">Login</Link> </p>
+    </div>
     </div>
   );
 };

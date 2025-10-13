@@ -28,6 +28,7 @@ body {
 }
 
 .navbar h1 {
+  text-align: center;
   font-size: 2rem;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(255,255,255,0.7);

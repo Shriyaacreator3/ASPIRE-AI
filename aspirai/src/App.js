@@ -8,25 +8,35 @@ import { ChatBox } from "./ChatBox";
 import { Settings } from "./Settings";
 import Journal from "./journal";
 import Entries from "./journalEntries";
-import ChatbaseGreeting from "./ChatbaseGreeting"; // ✅ Import here
+import ChatbaseGreeting from "./ChatbaseGreeting"; // ✅ keep your import
+import { MockInterview } from "./MockInterview";
+import MoodTrends from "./MoodTrends";
+import MiniLoFiPlayer from "./MiniLofiPlayer";
+import { XPProvider } from "./XPContext";
+import XPDisplay from "./XPDisplay";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<ProfileSetup />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/quizzes" element={<Quizzes />} />
-        <Route path="/chatbox" element={<ChatBox />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/journal" element={<Journal />} />
-        <Route path="/entries" element={<Entries />} />
-      </Routes>
+    <XPProvider>
+      <BrowserRouter>
+        <XPDisplay />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<ProfileSetup />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/chatbox" element={<ChatBox />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/entries" element={<Entries />} />
+          <Route path="/mood-trends" element={<MoodTrends />} />
+          <Route path="/mock-interview" element={<MockInterview />} />
+          <Route path="/lofi" element={<MiniLoFiPlayer />} />
+        </Routes>
 
-      {/* ✅ Use the component so the warning disappears */}
-      <ChatbaseGreeting />
-    </BrowserRouter>
+        <ChatbaseGreeting /> {/* ✅ keep this */}
+      </BrowserRouter>
+    </XPProvider>
   );
 }

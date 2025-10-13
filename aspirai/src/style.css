@@ -1,17 +1,20 @@
 /* ===== Background with animated gradient ===== */
 body {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh; /* Use min-height to allow content to grow */
   font-family: "Poppins", sans-serif;
   background: linear-gradient(-45deg, #ff6ec7, #6a5acd, #00c6ff, #ff8c00);
   background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
   color: white;
 }
-
+.centered-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
 /* Gradient animation */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }

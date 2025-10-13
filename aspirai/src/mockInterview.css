@@ -1,0 +1,78 @@
+.mock-container {
+  text-align: center;
+  padding: 2rem;
+  color: #fff;
+  background: linear-gradient(135deg, #6a5acd, #00c6ff);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.mock-container h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.mock-container p {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.role-input {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role-input input {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  width: 250px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.role-input button {
+  background: #ff6ec7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.role-input button:hover {
+  background: #ff8c00;
+}
+
+.questions {
+  margin-top: 2rem;
+  text-align: left;
+  max-width: 600px;
+  margin-inline: auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.questions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.questions li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  position: relative;
+}
+
+.questions li::before {
+  content: "❓";
+  margin-right: 0.5rem;
+}
