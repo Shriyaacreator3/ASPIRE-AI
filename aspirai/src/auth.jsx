@@ -55,6 +55,7 @@ export const Login = () => {
      
   }
   return(
+    <div className="centered-page-container"> 
     <div className="login-container">
     <h2>aspirAI 🚀</h2>
     
@@ -67,6 +68,7 @@ export const Login = () => {
         Don't have an account?<Link to="/signup" >Sign up here</Link>
         </p> 
     
+    </div>
     </div>
   );
 

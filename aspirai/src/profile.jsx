@@ -34,6 +34,7 @@ export const ProfileSetup = () => {
   };
 
   return (
+    <div className="centered-page-container"> 
     <div className="profile-setup-container">
       <h2>Complete Your Profile 🚀</h2>
       <p>We would love to know you better!</p>
@@ -50,6 +51,7 @@ export const ProfileSetup = () => {
       />
 
       <button onClick={saveProfile}>Save & Continue</button>
+    </div>
     </div>
   );
 };

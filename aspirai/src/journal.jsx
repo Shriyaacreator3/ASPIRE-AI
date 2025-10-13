@@ -1,3 +1,4 @@
+// Journal.jsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./journal.css"; // Import the CSS file
@@ -14,12 +15,21 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
+const MOODS = [
+  { key: "Happy", emoji: "😄" },
+  { key: "Good", emoji: "🙂" },
+  { key: "Neutral", emoji: "😐" },
+  { key: "Sad", emoji: "😢" },
+  { key: "Angry", emoji: "😡" },
+];
+
 export default function Journal() {
   const [entryText, setEntryText] = useState("");
   const [entries, setEntries] = useState([]);
   const [user, setUser] = useState(null);
   const [saving, setSaving] = useState(false);
-  const [savedMessage, setSavedMessage] = useState(""); // <-- message shown after save
+  const [savedMessage, setSavedMessage] = useState("");
+  const [selectedMood, setSelectedMood] = useState("Neutral");
 
   // Listen for auth state
   useEffect(() => {
@@ -27,7 +37,7 @@ export default function Journal() {
     return () => unsub();
   }, []);
 
-  // Subscribe to Firestore journal entries for the signed-in user
+  // Optionally preview recent entries (keeps UI reactive)
   useEffect(() => {
     if (!user) {
       setEntries([]);
@@ -45,6 +55,7 @@ export default function Journal() {
           return {
             id: d.id,
             text: data.text || "",
+            mood: data.mood || "Neutral",
             createdAt:
               data.createdAt && typeof data.createdAt.toDate === "function"
                 ? data.createdAt.toDate().toLocaleString()
@@ -62,6 +73,10 @@ export default function Journal() {
     return () => unsub();
   }, [user]);
 
+  const handleMoodClick = (moodKey) => {
+    setSelectedMood(moodKey);
+  };
+
   const handleSave = async () => {
     if (!entryText.trim()) return;
     if (!user) {
@@ -74,13 +89,13 @@ export default function Journal() {
       const colRef = collection(database, "users", user.uid, "journalEntries");
       await addDoc(colRef, {
         text: entryText.trim(),
+        mood: selectedMood || "Neutral",
         createdAt: serverTimestamp(),
       });
       setEntryText("");
 
-      // show saved message briefly
       setSavedMessage("Saved!");
-      setTimeout(() => setSavedMessage(""), 2500);
+      setTimeout(() => setSavedMessage(""), 2000);
     } catch (err) {
       console.error("Error saving entry:", err);
       alert("Failed to save entry. Try again.");
@@ -89,32 +104,57 @@ export default function Journal() {
     }
   };
 
+  const selectedEmoji = MOODS.find((m) => m.key === selectedMood)?.emoji || "😐";
+
   return (
     <div className="journal-container">
-      <h2 className="journal-title">📝 Your Journal</h2>
+      <div className="header-container">
+        <Link to="/home" className="arrow-btn" aria-label="Back to home">
+          ←
+        </Link>
+        <h2 className="journal-title">📝 Your Journal</h2>
+      </div>
 
-      <textarea
-        value={entryText}
-        onChange={(e) => setEntryText(e.target.value)}
-        placeholder="Write your thoughts here..."
-        className="journal-textarea"
-      />
+      {/* Mood selector */}
+<div className="mood-selector">
+  {MOODS.map((m) => (
+    <button
+      key={m.key}
+      type="button"
+      className={`mood-btn ${selectedMood === m.key ? "selected" : ""}`}
+      onClick={() => handleMoodClick(m.key)}
+      aria-pressed={selectedMood === m.key}
+      title={m.key}
+    >
+      <span className="mood-desc">{m.key}</span> {/* Move description above emoji */}
+      <span className="mood-emoji">{m.emoji}</span>
+    </button>
+  ))}
+</div>
 
-      <button
-        onClick={handleSave}
-        className="journal-save-btn"
-        disabled={saving}
-        type="button"
-      >
+{/* Selected mood wrapper for textarea */}
+<div className={`textarea-wrapper ${selectedMood ? "mood-selected" : ""}`}>
+  <textarea
+    value={entryText}
+    onChange={(e) => setEntryText(e.target.value)}
+    placeholder={`Write your thoughts here... ${selectedEmoji}`}
+    className="journal-textarea"
+  />
+</div>
+
+
+      <button onClick={handleSave} className="journal-save-btn" disabled={saving} type="button">
         {saving ? "Saving…" : "Save Entry"}
       </button>
 
-      {/* saved message */}
       {savedMessage && <div className="journal-saved-msg">{savedMessage}</div>}
 
       <div className="view-all-container">
         <Link to="/entries" className="nav-link-btn">
           View All Entries
+        </Link>
+        <Link to="/mood-trends" className="nav-link-btn" aria-label="Mood trends">
+          Mood Trends
         </Link>
       </div>
     </div>

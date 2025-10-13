@@ -7,11 +7,19 @@ import { ProfileSetup} from "./profile";
 import { ChatBox } from "./ChatBox";
 import { Settings } from "./Settings";
 import  Journal  from "./journal";
+import { MockInterview } from "./MockInterview";
 import  Entries  from "./journalEntries";
+import MoodTrends from "./MoodTrends";
+import MiniLoFiPlayer from "./MiniLofiPlayer";
+import { XPProvider } from "./XPContext";
+import XPDisplay from "./XPDisplay";
+
 
 export default function App() {
   return (
+    <XPProvider>
     <BrowserRouter>
+    <XPDisplay />
       <Routes>
         <Route path="/" element={<Login />} />  
         <Route path="/signup" element={<Signup />} /> 
@@ -22,7 +30,12 @@ export default function App() {
         <Route path="/settings" element={<Settings/>}/>
         <Route path="/journal" element={<Journal/>}/>
         <Route path="/entries" element={<Entries/>}/>
+        <Route path="/mood-trends" element={<MoodTrends />} />
+        <Route path="/mock-interview" element={<MockInterview />} />
+        <Route path="/lofi" element={<MiniLoFiPlayer />} />
       </Routes>
     </BrowserRouter>
+    </XPProvider>
+
   );
 }

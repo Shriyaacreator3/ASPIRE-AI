@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import "./MiniLofiPlayer.css";
 
 const songs = ["/audio/lofi1.mp3", "/audio/lofi2.mp3", "/audio/lofi3.mp3"];
 
 const MiniLoFiPlayer = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-
   const audioRef = useRef(new Audio(songs[0]));
 
   useEffect(() => {
@@ -46,12 +47,22 @@ const MiniLoFiPlayer = () => {
   };
 
   return (
+    
+    <div className="lofi-page-container">
+      <div className="arrow-back">
+        <Link to="/home" className="arrow-btn" aria-label="Back to home"> ←</Link>
+        </div>      
     <div className="lofi-player">
+      <div className="song-info">
       <h3>Mini LoFi Player 🎵</h3>
       <p>Now Playing: Song {currentSongIndex + 1}</p>
+      </div>
+      <div className="player-controls">
       <button onClick={prevSong}>⏮ Prev</button>
-      <button onClick={togglePlay}>{isPlaying ? "⏸ Pause" : "▶️ Play"}</button>
+      <button onClick={togglePlay}>{isPlaying ? "⏸ Pause" : "▶ Play"}</button>
       <button onClick={nextSong}>⏭ Next</button>
+      </div>
+    </div>
     </div>
   );
 };

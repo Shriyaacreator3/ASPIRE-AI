@@ -16,7 +16,7 @@
 }
 
 /* NEW: Container to align title and back link */
-.title-container {
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,16 +129,19 @@
 .entry-content {
   flex-grow: 1;
 }
-
-/* ...existing code... */
 .journal-entry-text {
-  white-space: pre-wrap;     
-  word-break: break-word;    
+  white-space: pre-wrap;      
+  word-break: break-word;   
   overflow-wrap: anywhere;
   color: #fff;
   margin: 0 0 6px 0;
 }
-/* ...existing code... */
+.journal-entry-text {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .journal-entry-date {
   font-size: 0.8rem;
   margin-top: 8px;
@@ -172,9 +175,81 @@
   color: #f0f0f0;
   padding: 20px;
 }
+/* Selected mood header (above textarea) */
+.selected-mood-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0 18px 0;
+}
+.selected-mood-emoji {
+  font-size: 2.2rem;
+  background: rgba(255,255,255,0.06);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+.selected-mood-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.12);
+}
+
+/* Mood selector (already partly present but ensure these exist) */
+.mood-selector {
+  display: flex;
+  width: 90%;
+  margin: 0 auto 20px auto;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 15px;
+
+
+}
+
+.mood-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  transition: transform 0.12s ease, background-color 0.18s ease, box-shadow 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 64px;
+}
+.mood-btn .mood-emoji { font-size: 1.9rem; }
+.mood-btn .mood-desc { font-size: 0.85rem; opacity: 0.95; }
+
+.mood-btn:hover { transform: translateY(-4px); background-color: rgba(255,255,255,0.04); }
+.mood-btn.selected {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Entry mood row inside entries view */
+.entry-mood-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.entry-mood-emoji { font-size: 1.4rem; }
+.entry-mood-text { font-weight: 600; color: #fff; opacity: 0.95; }
 
 /* NEW: Container for the "View All" button */
 .view-all-container {
+  display:flex;
+  justify-content:space-evenly;
+  align-items: center;
   margin-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 20px;
@@ -184,6 +259,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 20px;
 }
+.arrow-btn ,
 .nav-link-btn {
   display: inline-block;
   padding:15px;
@@ -194,7 +270,7 @@
   font-weight: 600;
   transition: background 0.3s, transform 0.2s;
 }
-
+.arrow-btn:hover
 .nav-link-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
@@ -213,4 +289,10 @@
   .journal-title {
     font-size: 1.8rem;
   }
+}
+/* Small tweak: ensure charts responsive container has space on mobile */
+@media (max-width: 800px) {
+  .selected-mood-emoji { font-size: 1.6rem; padding: 6px 8px; }
+  .mood-btn .mood-emoji { font-size: 1.6rem; }
+  .journal-textarea { height: 220px; }
 }
