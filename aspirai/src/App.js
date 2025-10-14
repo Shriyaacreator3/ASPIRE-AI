@@ -7,7 +7,7 @@ import { ProfileSetup } from "./profile";
 import { Settings } from "./Settings";
 import Journal from "./journal";
 import Entries from "./journalEntries";
-import ChatbaseGreeting from "./ChatbaseGreeting"; // ✅ keep your import
+import ChatbaseGreeting from "./ChatbaseGreeting";
 import { MockInterview } from "./MockInterview";
 import MoodTrends from "./MoodTrends";
 import MiniLoFiPlayer from "./MiniLofiPlayer";
@@ -29,6 +29,10 @@ export default function App() {
           <Route path="/profile" element={<ProfileSetup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/quizzes" element={<Quizzes />} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0817ef7e260012b662fc48078e3761d791eabb3c
           <Route path="/settings" element={<Settings />} />
           <Route path="/journal" element={<Journal />} />
   <Route path="/entries" element={<Entries />} />
