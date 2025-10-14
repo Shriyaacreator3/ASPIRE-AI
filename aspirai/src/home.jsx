@@ -19,7 +19,7 @@ export function Home() {
         <main className="dashboard">
           <div className="card" onClick={() => navigate("/quizzes")}>📝 Quizzes</div>
           <div className="card" onClick={() => navigate("/lofi")}>Lofi zone</div>
-          <div className="card" onClick={() => navigate("/chatbox")}>🧠 AI Assistant</div>
+      
           <div className="card" onClick={() => navigate("/journal")}>📅 Journal entry</div>
           <div className="card" onClick={() => navigate("/mock-interview")}>🎤 Mock Interviews</div>
           <div className="card" onClick={() => navigate("/settings")}>⚙ User settings</div>
