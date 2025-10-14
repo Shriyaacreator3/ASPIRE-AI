@@ -29,10 +29,6 @@ export default function App() {
           <Route path="/profile" element={<ProfileSetup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/quizzes" element={<Quizzes />} />
-<<<<<<< HEAD
-=======
-
->>>>>>> 0817ef7e260012b662fc48078e3761d791eabb3c
           <Route path="/settings" element={<Settings />} />
           <Route path="/journal" element={<Journal />} />
   <Route path="/entries" element={<Entries />} />

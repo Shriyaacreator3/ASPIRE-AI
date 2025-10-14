@@ -1,59 +1,91 @@
+/* ===============================
+   TARGET CURSOR WRAPPER
+=============================== */
 .target-cursor-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
   transform: translate(-50%, -50%);
+  opacity: 0;                   /* 👈 Hidden by default */
+  transition: opacity 0.2s ease;
 }
 
+/* ===============================
+   DOT (CENTER POINT)
+=============================== */
 .target-cursor-dot {
   position: absolute;
   left: 50%;
   top: 50%;
   width: 4px;
   height: 4px;
-  color: white;
-  background: #fff;
+  background: white;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   will-change: transform;
 }
 
+/* ===============================
+   CORNERS
+=============================== */
 .target-cursor-corner {
   position: absolute;
   left: 50%;
   top: 50%;
   width: 12px;
   height: 12px;
-  color: white;
-  border: 3px solid #fff;
+  border: 3px white solid;
   will-change: transform;
 }
 
+/* Top-left corner */
 .corner-tl {
   transform: translate(-150%, -150%);
   border-right: none;
   border-bottom: none;
+  border-color: white;
 }
 
+/* Top-right corner */
 .corner-tr {
   transform: translate(50%, -150%);
   border-left: none;
   border-bottom: none;
+  border-color: white;
 }
 
+/* Bottom-right corner */
 .corner-br {
   transform: translate(50%, 50%);
   border-left: none;
   border-top: none;
+  border-color: white;
 }
 
+/* Bottom-left corner */
 .corner-bl {
   transform: translate(-150%, 50%);
   border-right: none;
   border-top: none;
+  border-color: white;
+}
+
+/* ===============================
+   SHOW CUSTOM CURSOR ON CARDS ONLY
+=============================== */
+.cursor-target {
+  cursor: none !important;   /* ✅ Hide system cursor only on target cards */
+}
+
+/* OPTIONAL (Makes hover feel more like a button) */
+.cursor-target:hover {
+  filter: brightness(1.1);
+  transition: 0.2s;
+}
+@media (max-width: 768px) {
+  .cursor-target {
+    display: none;
+  }
 }
