@@ -20,15 +20,49 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
+    <!-- Main aspirAI Chatbot -->
     <script>
       window.chatbaseConfig = {
-        chatbotId: "hn7Mknif63AxbSRTkyyqv", // 👈 Your specific Chatbase Bot ID
+        chatbotId: "hn7Mknif63AxbSRTkyyqv",
       };
     </script>
     <script
       src="https://www.chatbase.co/embed.min.js"
-      id="hn7Mknif63AxbSRTkyyqv"      // 👈 The same ID
+      id="hn7Mknif63AxbSRTkyyqv"
       defer
     ></script>
+
+    <!-- Resume Checker Chatbot (Hidden) -->
+    <script>
+      // Wait for page to load, then load resume checker
+      window.addEventListener('load', function() {
+        // Create a separate config for resume checker
+        window.resumeChatbaseConfig = {
+          chatbotId: "iAEKB-SW8rIKnbmYeWTsx",
+        };
+
+        // Load resume checker script
+        const resumeScript = document.createElement('script');
+        resumeScript.src = "https://www.chatbase.co/embed.min.js";
+        resumeScript.id = "iAEKB-SW8rIKnbmYeWTsx";
+        resumeScript.setAttribute('data-chatbot', 'resume-checker');
+        
+        // Rename the chatbase function for resume checker to avoid conflicts
+        resumeScript.onload = function() {
+          // Store resume chatbot separately
+          window.resumeChatbase = window.chatbase;
+          // Restore main chatbot
+          window.chatbase = window.mainChatbase;
+        };
+
+        // Store main chatbot reference before loading resume checker
+        window.mainChatbase = window.chatbase;
+        
+        // Load after a delay to ensure main chatbot is initialized
+        setTimeout(() => {
+          document.body.appendChild(resumeScript);
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
