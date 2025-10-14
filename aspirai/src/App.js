@@ -14,6 +14,10 @@ import MoodTrends from "./MoodTrends";
 import MiniLoFiPlayer from "./MiniLofiPlayer";
 import { XPProvider } from "./XPContext";
 import XPDisplay from "./XPDisplay";
+import React from "react";
+import ResumeUploader from "./ResumeUploader";
+
+
 
 export default function App() {
   return (
@@ -29,11 +33,15 @@ export default function App() {
           <Route path="/chatbox" element={<ChatBox />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/journal" element={<Journal />} />
-          <Route path="/entries" element={<Entries />} />
-          <Route path="/mood-trends" element={<MoodTrends />} />
-          <Route path="/mock-interview" element={<MockInterview />} />
-          <Route path="/lofi" element={<MiniLoFiPlayer />} />
-        </Routes>
+  <Route path="/entries" element={<Entries />} />
+  <Route path="/mood-trends" element={<MoodTrends />} />
+  <Route path="/mock-interview" element={<MockInterview />} />
+  <Route path="/lofi" element={<MiniLoFiPlayer />} />
+
+  {/* ✅ New Resume Checker Route */}
+  <Route path="/resume-checker" element={<ResumeUploader />} />
+</Routes>
+
 
         <ChatbaseGreeting /> {/* ✅ keep this */}
       </BrowserRouter>
