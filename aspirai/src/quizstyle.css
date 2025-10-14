@@ -1,20 +1,3 @@
-body {
-  margin: 0;
-  height: 100vh;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(-45deg, #ff6ec7, #6a5acd, #00c6ff, #ff8c00);
-  background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
-  color: white;
-}
-
-/* Gradient animation */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* ===== Quiz Container (glassmorphism) ===== */
 .quiz-container {
   background: rgba(255, 255, 255, 0.12);
@@ -48,7 +31,7 @@ body {
 
 .quiz-progress-fill {
   height: 100%;
-  background: linear-gradient(135deg, #43cea2, #185a9d);
+  background: black;
   transition: width 0.3s ease;
 }
 
@@ -108,7 +91,7 @@ body {
 }
 
 .quiz-option.selected {
-  background: linear-gradient(135deg, #43cea2, #185a9d);
+  background: black;
   font-weight: bold;
   transform: scale(1.03);
 }
@@ -117,6 +100,12 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Responsive */
