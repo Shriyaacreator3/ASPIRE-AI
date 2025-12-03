@@ -1,84 +1,89 @@
-
+/* Container to fill the entire viewport */
 .lofi-page-container {
-  width: 100%;
-  min-height: 100vh;
-  background: url('https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyYnZlMnpza2ZoNXJoeWpqbXptMzVzcnkxZ3o0YWtpNnh0YzNpeHNoaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H62NM1ab7wzMXURdoi/giphy.gif') no-repeat center center fixed;
-  background-size: cover;
-}
-.arrow-back{
-  display: inline-block;
-  padding:15px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* Optional: Set a fallback background color */
+  background-color: #1a1a2e; 
 }
 
-.lofi-player {
-  position: fixed;
-  bottom: 0;
+/* Style the Canvas to cover the entire container */
+.lofi-3d-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Ensures it fills the background */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Keep the canvas in the background */
+}
+
+/* Overlay container for the music player and controls */
+.ui-overlay {
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
-  box-sizing: border-box;
-  z-index: 1000;
-
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
-
-  /* Flexbox layout to space out the info and controls */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* Allows stacking on small screens */
-  padding: 1rem 2rem;
-  gap: 1rem;
+  height: 100%;
+  z-index: 10; /* Bring the UI elements to the front */
+  pointer-events: none; /* Allows mouse events to pass through to the Canvas by default */
+  /* Remove this line if you want the overlay to block model interaction */
 }
 
-.song-info h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+/* Style for the player control panel */
+.lofi-player {
+  pointer-events: auto; /* Re-enable pointer events for the player itself */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(45, 50, 80, 0.8); /* Semi-transparent dark background */
+  padding: 15px 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
 }
 
-.song-info p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #e0e0e0;
+/* Style for the back button */
+.arrow-back {
+  pointer-events: auto; /* Re-enable pointer events for the button */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 11; /* Ensure it's on top of the overlay */
 }
+
+.arrow-btn {
+  /* Style your back button here */
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  background: rgba(45, 50, 80, 0.7);
+  padding: 5px 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* --- NEW / MODIFIED CSS --- */
 .player-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem; /* Creates space between the buttons */
+  /* Use Flexbox to align buttons horizontally */
+  display: flex; 
+  /* Space them out evenly */
+  justify-content: space-between; 
+  /* Center items vertically */
+  align-items: center; 
+  /* Add some margin to separate controls from song info */
+  margin-top: 15px; 
 }
+
 .player-controls button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px; /* Pill shape */
+  /* Ensure the buttons themselves are styled properly */
+  margin: 0 8px; /* Reduce horizontal margin since they are spaced by flexbox */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
+  background-color: #6a6a93;
+  color: white;
   font-weight: bold;
-  transition: all 0.2s ease-in-out;
-}
-
-.player-controls button:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-@media (max-width: 600px) {
-  .lofi-player {
-    flex-direction: column; /* Stack info on top of controls */
-    justify-content: center;
-    text-align: center;
-  }
 }

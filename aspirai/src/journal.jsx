@@ -1,5 +1,5 @@
 // Journal.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./journal.css"; // Import the CSS file
 
@@ -30,6 +30,7 @@ export default function Journal() {
   const [saving, setSaving] = useState(false);
   const [savedMessage, setSavedMessage] = useState("");
   const [selectedMood, setSelectedMood] = useState("Neutral");
+  const textareaRef = useRef(null);
 
   // Listen for auth state
   useEffect(() => {
@@ -75,6 +76,9 @@ export default function Journal() {
 
   const handleMoodClick = (moodKey) => {
     setSelectedMood(moodKey);
+    if (textareaRef.current) {
+    textareaRef.current.focus();
+  }
   };
 
   const handleSave = async () => {
@@ -135,6 +139,7 @@ export default function Journal() {
 {/* Selected mood wrapper for textarea */}
 <div className={`textarea-wrapper ${selectedMood ? "mood-selected" : ""}`}>
   <textarea
+    ref={textareaRef}
     value={entryText}
     onChange={(e) => setEntryText(e.target.value)}
     placeholder={`Write your thoughts here... ${selectedEmoji}`}

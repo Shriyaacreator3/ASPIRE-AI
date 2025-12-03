@@ -23,7 +23,7 @@
 /* Progress Bar */
 .quiz-progress {
   height: 14px;
-  background: rgba(255, 255, 255, 0.2);
+  background:rgba(255, 255, 255, 0.12);
   border-radius: 7px;
   overflow: hidden;
   margin-bottom: 10px;
@@ -31,7 +31,7 @@
 
 .quiz-progress-fill {
   height: 100%;
-  background: black;
+  background:violet;
   transition: width 0.3s ease;
 }
 
@@ -41,13 +41,16 @@
   color: #f5f5f5;
   margin-bottom: 20px;
 }
-
+.quiz-score {
+  /* ... (any existing styles you have for this) ... */
+  margin-bottom: 30px; /* This adds the gap */
+}
 /* Quiz Cards */
 .quiz-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 14px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   transition: transform 0.2s, box-shadow 0.3s;
 }
 
@@ -58,9 +61,9 @@
 
 /* Questions */
 .quiz-question {
-  font-size: 1.2rem;
+  font-size: 1 rem;
   font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   color: #fff;
   text-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
@@ -91,11 +94,79 @@
 }
 
 .quiz-option.selected {
-  background: black;
+  background: grey;
   font-weight: bold;
   transform: scale(1.03);
 }
+/* ... (all your existing CSS from the prompt) ... */
 
+/* ===== Answer States (After Submit) ===== */
+
+.quiz-option.correct {
+  background: rgba(40, 167, 69, 0.7); /* Green glass */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+  transform: scale(1.03);
+}
+
+.quiz-option.incorrect {
+  background: rgba(220, 53, 69, 0.7); /* Red glass */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
+  opacity: 1; /* Make sure it's fully visible */
+}
+
+.quiz-option.disabled {
+  background: rgba(255, 255, 255, 0.05); /* Fade out */
+  color: #aaa;
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Ensure correct/incorrect override hover effects */
+.quiz-option.correct:hover,
+.quiz-option.incorrect:hover,
+.quiz-option.disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: unset; /* Prevents base class from overriding */
+}
+
+/* Re-apply correct/incorrect backgrounds after clearing hover */
+.quiz-option.correct {
+  background: rgba(40, 167, 69, 0.7);
+}
+.quiz-option.incorrect {
+  background: rgba(220, 53, 69, 0.7);
+}
+.quiz-option.disabled {
+  background: rgba(255, 255, 255, 0.05);
+}
+/* ... (all your existing styles) ... */
+
+/* --- NEW: Style for the "Next Quiz" Button --- */
+.quiz-next-btn {
+  display: block;
+  
+  margin: 15px auto 0;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color:violet;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quiz-next-btn:hover {
+  background-color: violet;
+}
 /* Fade-in effect */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }

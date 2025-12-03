@@ -1,0 +1,210 @@
+/* ResumeUploader.css — Glassmorphism Style */
+
+/* --- Container --- */
+.resume-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 40px 30px;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* --- Title --- */
+.resume-title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* --- Mode Toggle (Upload / Enter as Text buttons) --- */
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px; /* ✅ Adds space below the buttons */
+}
+
+.mode-toggle button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.mode-toggle button.active {
+  background: violet;
+}
+
+.mode-toggle button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+
+/* --- Dropzone --- */
+.dropzone {
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  padding: 50px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, transform 0.2s;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.dropzone.active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+/* --- Textarea --- */
+.resume-textarea {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px;
+  margin-bottom: 20px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  resize: vertical;
+}
+
+.resume-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.resume-textarea:focus {
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  transform: scale(1.01);
+}
+
+/* --- File info and remove button --- */
+.file-info {
+  color: #aaffaa;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.remove-btn {
+  margin-top: 10px;
+  background: rgba(255, 82, 82, 0.3);
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.remove-btn:hover {
+  background: rgba(255, 82, 82, 0.6);
+  transform: scale(1.05);
+}
+
+/* --- Role input --- */
+.role-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.role-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.role-input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Analyze Button --- */
+.analyze-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(100, 181, 246, 0.6);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Feedback box --- */
+.feedback-box {
+  margin-top: 25px;
+  white-space: pre-wrap;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.feedback-box.error {
+  background: rgba(255, 82, 82, 0.2);
+  border-color: rgba(255, 82, 82, 0.5);
+}
+
+.feedback-box.success {
+  background: rgba(33, 150, 243, 0.2);
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+/* --- Animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 25px 20px;
+    width: 90%;
+  }
+
+  .resume-title {
+    font-size: 1.8rem;
+  }
+
+  .resume-textarea {
+    height: 180px;
+  }
+}
