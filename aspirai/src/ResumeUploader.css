@@ -186,8 +186,230 @@
   background: rgba(33, 150, 243, 0.2);
   border-color: rgba(33, 150, 243, 0.4);
 }
+/* --- NEW STYLES FOR AI REPORT COMPONENTS --- */
 
-/* --- Animation --- */
+/* --- Custom Color Definitions (for consistency with Glassmorphism) --- */
+.text-success { color: #88ff88; } /* Light green */
+.text-success-strong { color: #4CAF50; } /* Stronger green */
+.bg-success-light { background-color: rgba(76, 175, 80, 0.2); } /* Transparent Green */
+
+.text-error-strong { color: #FF5252; } /* Strong Red */
+.bg-error-light { background-color: rgba(255, 82, 82, 0.2); } /* Transparent Red */
+
+.text-warning-strong { color: #FFC107; } /* Strong Yellow/Amber */
+
+.text-gray-normal { color: rgba(255, 255, 255, 0.85); }
+
+
+/* --- 1. Overall Score Card --- */
+.structured-report-container {
+    margin-top: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.overall-score-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin-bottom: 20px;
+    
+    /* Inherit Glassmorphism style */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.score-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.issue-count {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* SVG Icon Colors */
+.icon-success { color: #88ff88; }
+.icon-error { color: #ff5252; }
+
+
+/* --- 2. Main Section Accordion (ATS, Content, etc.) --- */
+.section-accordion-item-style {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Adding transform transition here to counteract any inherited effect */
+    transition: box-shadow 0.3s; 
+}
+
+/* Explicitly disable transform on hover for the item container 
+.section-accordion-item-style:hover {
+    transform: none; /* Ensure no scaling/zooming happens 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Slightly increase shadow, but prevent scaling 
+}*/
+
+.accordion-header-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/*.accordion-header-style:hover {
+    background: rgba(255, 255, 255, 0.2);
+}*/
+
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.issue-badge-style {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.section-rating-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-rating-percentage-style {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.chevron-icon {
+    transition: transform 0.3s;
+    color: rgba(255, 255, 255, 0.7);
+}
+.chevron-icon.is-open {
+    transform: rotate(180deg);
+}
+
+/* --- 3. Accordion Content (Subsections) --- */
+.accordion-content-inner {
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.2); /* Darker transparent background for content */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Individual Subsection Row */
+.subsection-row-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.subsection-toggle-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.subsection-toggle-line.is-clickable:hover {
+    background: rgba(255, 255, 255, 0.05); /* Subtle hover for clickable items */
+    cursor: pointer;
+}
+
+.subsection-toggle-line.not-clickable {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.status-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.status-chevron-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* --- 4. Hidden Finding Content and Corrections --- */
+.subsection-finding-content {
+    padding: 0 20px 15px 20px;
+    /* Optional: Add smooth animation for expansion */
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out; 
+}
+
+.correction-details-box,
+.detail-box-plain {
+    padding: 10px 15px;
+    margin-top: 8px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3); /* Darker background for focus */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.original-mistake,
+.suggested-correction {
+    display: block;
+    padding: 3px 0;
+}
+
+/* Correction Highlighting */
+.strikethrough-red {
+    text-decoration: line-through;
+    color: #ff5252; /* Error red */
+    margin-left: 5px;
+}
+
+.text-success {
+    color: #88ff88 !important; /* Success green */
+}
+
+.label-original,
+.label-correction {
+    font-weight: 700;
+    margin-right: 5px;
+    color: rgba(255, 255, 255, 0.9);
+}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-15px); }
   to { opacity: 1; transform: translateY(0); }
