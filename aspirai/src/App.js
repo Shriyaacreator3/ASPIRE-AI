@@ -16,29 +16,30 @@ import MiniLoFiPlayer from "./MiniLofiPlayer";
 import { XPProvider } from "./XPContext";
 import XPDisplay from "./XPDisplay";
 import ResumeUploader from "./ResumeUploader";
+import PersonalityQuiz from "./PersonalityQuiz";
 
 export default function App() {
   return (
     <XPProvider>
-        <BrowserRouter>
-          <XPDisplay />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<ProfileSetup />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/quizzes" element={<Quizzes />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/journal" element={<Journal />} />
-            <Route path="/entries" element={<Entries />} />
-            <Route path="/mood-trends" element={<MoodTrends />} />
-            <Route path="/mock-interview" element={<MockInterview />} />
-            <Route path="/lofi" element={<MiniLoFiPlayer />} />
-            <Route path="/resume-checker" element={<ResumeUploader />} />
-          </Routes>
-
-          <ChatbaseGreeting /> {/* keep this */}
-        </BrowserRouter>
+      <BrowserRouter>
+        <XPDisplay />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<ProfileSetup />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/entries" element={<Entries />} />
+          <Route path="/mood-trends" element={<MoodTrends />} />
+          <Route path="/mock-interview" element={<MockInterview />} />
+          <Route path="/lofi" element={<MiniLoFiPlayer />} />
+          <Route path="/resume-checker" element={<ResumeUploader />} />
+          <Route path="/personality-quiz" element={<PersonalityQuiz />} />
+        </Routes>
+        <ChatbaseGreeting /> {/* keep this */}
+      </BrowserRouter>
     </XPProvider>
   );
 }
