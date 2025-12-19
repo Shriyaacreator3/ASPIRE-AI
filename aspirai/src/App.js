@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Login } from "./auth";
 import { Signup } from "./Signup";
+import Layout from "./Layout";
 import { Home } from "./home";
 import { Quizzes } from "./quizzes";
-import { ProfileSetup } from "./profile";
 import { Settings } from "./Settings";
 import Journal from "./journal";
 import Entries from "./journalEntries";
@@ -26,7 +26,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/profile" element={<ProfileSetup />} />
+          <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/settings" element={<Settings />} />
@@ -37,6 +37,7 @@ export default function App() {
           <Route path="/lofi" element={<MiniLoFiPlayer />} />
           <Route path="/resume-checker" element={<ResumeUploader />} />
           <Route path="/personality-quiz" element={<PersonalityQuiz />} />
+          </Route>
         </Routes>
         <ChatbaseGreeting /> {/* keep this */}
       </BrowserRouter>

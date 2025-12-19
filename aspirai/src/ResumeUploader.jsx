@@ -428,7 +428,7 @@ For Spelling and Grammar, if 'hasIssue' is true, the 'detail' MUST be formatted 
               setFeedback("");
               setReport(null);
             }}
-            className="remove-file-btn"
+            className="remove-btn"
           >
             Remove File
           </button>

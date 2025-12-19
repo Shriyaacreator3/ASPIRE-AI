@@ -108,7 +108,7 @@ export default function Entries() {
       </div>
 
       <div className="back-container">
-        <Link to="/journal" className="nav-link-btn">
+        <Link to="/journal" className="jback-btn">
           Back to Journal
         </Link>
       </div>

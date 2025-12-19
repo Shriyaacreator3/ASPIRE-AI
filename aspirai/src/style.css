@@ -1,189 +1,192 @@
-/* ===== Background with animated gradient ===== */
+/* ===== Base & Background ===== */
 body {
   margin: 0;
-  min-height: 100vh; /* Use min-height to allow content to grow */
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-image:url(/public/images/coolbackgrounds-particles-stellar.png);
+  /* Light blue base with a subtle gradient */
+  background: #FFFFFF;
+  background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
-  color: white;
+  color: #286FB4;
 }
+
 .centered-page-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  padding: 20px;
 }
-/* Gradient animation */
+
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* ===== Login card (glassmorphism) ===== */
-.login-container {
-  background:rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
+/* ===== Card Containers ===== */
+/* This handles Login, Signup, and Profile Setup cards */
+.login-container{
+  background-color: #FFFFFF;
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 24px ;
+  border: 2px solid #E2F0F9;
   text-align: center;
-  width: 330px;
-  box-shadow: lightviolet;
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-/* Heading */
-.login-container h2 {
-  margin-bottom: 25px;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
-}
-.signup-container {
-  background:rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  width: 330px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-/* Heading */
-.signup-container h2 {
-  margin-bottom: 25px;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
-}
-
-/* Profile Setup Container */
-.profile-setup-container {
-  background:rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  width: 330px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-/* Card Style */
-.profile-setup-container h2 {
-  margin-bottom: 25px;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
-}
-
-.profile-setup-container p {
-  margin-bottom: 20px;
-  color: #eef1f4;
-}
-
-/* Inputs */
-.profile-setup-container input {
   width: 100%;
-  padding: 14px;
-  margin: 12px 0;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  transition: 0.3s;
+  max-width: 400px;
+  box-shadow: 0 15px 35px rgba(40, 111, 180, 0.15);
+  animation: fadeIn 0.8s ease-out;
 }
 
-.profile-setup-container input:focus {
-  background: rgba(255,255,255,0.3);
-  box-shadow: 0 0 8px rgba(255,255,255,0.6);
-  
+/* Heading Typography *
+h2, h3 {
+  color: #286FB4;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-/* Button */
-.profile-setup-container button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 18px;
-  border-radius: 12px;
-  border: none;
-  background-color:rgba(255,255,255,0.15);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+p {
+  color: #52525b;
+  line-height: 1.6;
 }
 
-.profile-setup-container button:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 15px rgba(255,255,255,0.7);
-}
-
-/* Responsive */
-@media (max-width: 400px) {
-  .profile-setup-container input,
-  .profile-setup-container button {
-    width: 90%;
-  }
-}
-/* Inputs */
+/* ===== Form Elements ===== */
 input {
-  width: 90%;
-  padding: 14px;
+  width: 100%;
+  padding: 14px 18px;
   margin: 12px 0;
   border-radius: 12px;
-  border: none;
+  border: 2px solid #E2F0F9; /* Very light blue border */
   outline: none;
   font-size: 1rem;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  transition: 0.3s;
+  background: #FFFFFF;
+  color: #286FB4;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
 }
 
 input:focus {
-  background: rgba(255,255,255,0.3);
-  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+  border-color: #286FB4;
+  box-shadow: 0 0 0 4px rgba(40, 111, 180, 0.1);
 }
 
 input::placeholder {
-  color: #eee;
+  color: #B0DDE4;
 }
 
-/* Button */
+/* Standard Buttons */
 button {
   width: 100%;
   padding: 14px;
-  margin-top: 18px;
+  margin-top: 15px;
   border-radius: 12px;
   border: none;
-  background:violet;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #286FB4; /* Primary Blue */
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:hover {
-  transform:none;
-  box-shadow: 0 0 15px rgba(255,255,255,0.7);
+  background-color: #1e568d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 111, 180, 0.3);
 }
 
-/* Error/Message text */
-#message {
+button:active {
+  transform: translateY(0);
+}
+
+/* ===== Google Sign-In Button ===== */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
   margin-top: 15px;
-  font-size: 0.9rem;
-  color: #ffbaba;
-  min-height: 20px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  color: #286FB4; /* Using your Primary Blue */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #B0DDE4; /* Using your Soft Blue */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(40, 111, 180, 0.05);
 }
 
-/* Fade-in effect */n
+.google-btn:hover {
+  background-color: #f8fbfe;
+  border-color: #286FB4;
+  box-shadow: 0 4px 12px rgba(40, 111, 180, 0.12);
+  transform: translateY(-1px);
+}
+
+.google-btn:active {
+  transform: translateY(0);
+}
+
+.google-logo {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Optional: Label styling inside the button */
+.google-btn span {
+  display: inline-block;
+  margin-top: 1px; /* Visual alignment fix */
+}
+/* Link Styling */
+a {
+  color: #DF4C73; /* Accent color for links */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+/* ===== Helpers ===== */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #B0DDE4;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #E2F0F9;
+}
+
+.separator:not(:empty)::before { margin-right: .5em; }
+.separator:not(:empty)::after { margin-left: .5em; }
+
+/* Error Message */
+.error-text {
+  color: #DF4C73;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-container, .signup-container {
+    padding: 30px 20px;
+    width: 90%;
+  }
 }

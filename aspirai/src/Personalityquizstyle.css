@@ -1,5 +1,5 @@
 /* Full-page layout for ongoing quiz */
-.quiz-page {
+.pquiz-page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 /* Card for questions */
-.quiz-card {
+.pquiz-card {
   max-width: 650px;
   width: 90%;
   padding: 32px 40px;
@@ -18,30 +18,30 @@
   color: #f9fafb;
 }
 
-.quiz-card h2 {
+.pquiz-card h2 {
   font-size: 1.9rem;
   margin-bottom: 8px;
 }
 
-.quiz-card p {
+.pquiz-card p {
   margin: 4px 0;
   color: #e5e7eb;
 }
 
-.quiz-card h3 {
+.pquiz-card h3 {
   margin-top: 18px;
   margin-bottom: 14px;
 }
 
 /* Options */
-.quiz-options {
+.pquiz-options {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 8px;
 }
 
-.quiz-options button {
+.pquiz-options button {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.6);
@@ -52,14 +52,14 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
 }
 
-.quiz-options button:hover {
+.pquiz-options button:hover {
   background: rgba(56, 189, 248, 0.15);
   box-shadow: 0 8px 18px rgba(56, 189, 248, 0.35);
   transform: translateY(-1px);
 }
 
 /* Result page centered on screen */
-.quiz-result-page {
+.pquiz-result-page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -67,7 +67,7 @@
 }
 
 /* Result card styling */
-.quiz-result-card {
+.pquiz-result-card {
   max-width: 650px;
   width: 90%;
   padding: 32px 40px;
@@ -85,24 +85,24 @@
 }
 
 /* Big emoji / icon */
-.quiz-result-icon {
+.pquiz-result-icon {
   font-size: 3.2rem;
   margin-bottom: 10px;
 }
 
 /* Text inside result card */
-.quiz-result-card h2 {
+.pquiz-result-card h2 {
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-.quiz-result-card p {
+.pquiz-result-card p {
   margin: 6px 0;
   color: #e5e7eb;
 }
 
 /* Link button */
-.quiz-result-card a {
+.pquiz-result-card a {
   display: inline-block;
   margin-top: 18px;
   padding: 10px 18px;
@@ -115,7 +115,7 @@
   transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
 }
 
-.quiz-result-card a:hover {
+.pquiz-result-card a:hover {
   background: rgba(56, 189, 248, 0.16);
   box-shadow: 0 10px 24px rgba(56, 189, 248, 0.4);
   transform: translateY(-1px);

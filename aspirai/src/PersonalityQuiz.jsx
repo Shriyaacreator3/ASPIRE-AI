@@ -113,9 +113,9 @@ export default function PersonalityQuiz() {
     const icon = getIconForType(type);
 
     return (
-      <div className="quiz-result-page">
-        <div className="quiz-result-card">
-          <div className="quiz-result-icon">{icon}</div>
+      <div className="pquiz-result-page">
+        <div className="pquiz-result-card">
+          <div className="pquiz-result-icon">{icon}</div>
           <h2>Your personality snapshot</h2>
           <p>
             Your 4-letter type (rough hint): <strong>{type}</strong>
@@ -139,14 +139,14 @@ export default function PersonalityQuiz() {
   const q = questions[current];
 
   return (
-    <div className="quiz-page">
-      <div className="quiz-card">
+    <div className="pquiz-page">
+      <div className="pquiz-card">
         <h2>Quick Personality Quiz</h2>
         <p>
           Question {current + 1} of {questions.length}
         </p>
         <h3>{q.text}</h3>
-        <div className="quiz-options">
+        <div className="pquiz-options">
           {q.options.map((opt, idx) => (
             <button key={idx} onClick={() => handleAnswer(opt.dim)}>
               {opt.text}

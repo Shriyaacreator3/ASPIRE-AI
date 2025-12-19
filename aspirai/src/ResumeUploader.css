@@ -2,7 +2,7 @@
 
 /* --- Container --- */
 .resume-container {
-  background: rgba(255, 255, 255, 0.08);
+  background: #286FB4;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: 20px;
@@ -12,7 +12,7 @@
   margin: 50px auto;
   text-align: center;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: #fff;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -43,11 +43,11 @@
 }
 
 .mode-toggle button.active {
-  background: violet;
+  background: white;
+  color: #286FB4;
 }
 
 .mode-toggle button:hover {
-  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
@@ -103,18 +103,17 @@
 
 .remove-btn {
   margin-top: 10px;
-  background: rgba(255, 82, 82, 0.3);
+  background:white;
   border: none;
   padding: 8px 16px;
-  color: white;
+  color: #286FB4;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 
 .remove-btn:hover {
-  background: rgba(255, 82, 82, 0.6);
-  transform: scale(1.05);
+  
 }
 
 /* --- Role input --- */
@@ -143,10 +142,10 @@
 .analyze-btn {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #2196f3, #64b5f6);
+  background: white;
   border: none;
   border-radius: 12px;
-  color: #fff;
+  color: #286FB4;
   font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
@@ -218,8 +217,8 @@
     padding: 30px;
     margin-bottom: 20px;
     
-    /* Inherit Glassmorphism style */
-    background: rgba(255, 255, 255, 0.1);
+    /* Inherit Glassmorphism style *
+    background: rgba(255, 255, 255, 0.1);*/
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);

@@ -37,7 +37,8 @@ const styles = {
     position: "fixed",
     top: 20,
     right: 20,
-    background: "linear-gradient(135deg, #2142adff 0%, #f4f6fcff 100%)",
+    background:"#DF4C73",
+    /*background: "linear-gradient(135deg, #2142adff 0%, #f4f6fcff 100%)",*/
     padding: "10px 16px",
     borderRadius: "12px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.2)",

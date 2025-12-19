@@ -9,7 +9,6 @@ import * as THREE from "three";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 const initialScore = {
-  confidence: 0,
   englishSkill: 0,
   accuracy: 0,
   timing: 0,
@@ -91,7 +90,7 @@ export function MockInterview() {
 
   // ✅ ALL useCallback calls BEFORE any conditional returns
   const evaluateAnswer = useCallback(
-    async (question, answer, rawConfidence, rawTime) => {
+    async (question, answer, rawTime) => {
       if (evaluatedSetRef.current.has(currentQIndex)) return;
 
       evaluatedSetRef.current.add(currentQIndex);
@@ -126,11 +125,7 @@ Rate accuracy and English skill from 1 to 5 and return JSON:
 
           if (jsonText) {
             const aiRating = JSON.parse(jsonText.trim());
-            const confidencePoints =
-              rawConfidence >= 0.9 ? 5 : rawConfidence >= 0.7 ? 3 : rawConfidence > 0 ? 1 : 0;
-
             finalRating = {
-              confidence: confidencePoints,
               englishSkill: aiRating.english_skill_rating ?? 0,
               accuracy: aiRating.accuracy_rating ?? 0,
               timing: timingPoints,
@@ -139,7 +134,6 @@ Rate accuracy and English skill from 1 to 5 and return JSON:
           }
         } else {
           finalRating = {
-            confidence: rawConfidence > 0 ? 3 : 0,
             englishSkill: 3,
             accuracy: 3,
             timing: timingPoints,
@@ -244,7 +238,6 @@ Rate accuracy and English skill from 1 to 5 and return JSON:
     evaluateAnswer(
       questions[currentQIndex],
       transcript.trim() || "No response",
-      1,
       timeTaken
     );
   }, [questions, currentQIndex, transcript, evaluateAnswer]);
@@ -358,7 +351,7 @@ Rate accuracy and English skill from 1 to 5 and return JSON:
                 onChange={(e) => setRole(e.target.value)}
                 disabled={loading}
               />
-              <button onClick={generateQuestions} disabled={loading}>
+              <button className="start-btn" onClick={generateQuestions} disabled={loading}>
                 {loading ? "Generating..." : "Start Interview"}
               </button>
             </div>

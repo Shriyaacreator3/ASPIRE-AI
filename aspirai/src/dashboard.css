@@ -1,195 +1,418 @@
-/* ===== Background ===== */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ==================================== */
+/* aspirAI Dashboard Styles - Redesign V4 */
+/* ==================================== */
+
+/* --- Color Palette --- */
+/* Pink Accent: #DF4C73 (Fandango Pink) */
+/* Pastel Blue 1: #E2F0F9 (Lightest) */
+/* Dark Blue: #286FBF4 */
+/* Dark Background for Card: #2A3644 */
+/* White: #FFFFFF */
+
+/* Global container and background setup */
+.home-container {
+    min-height: 100vh;
+    /*background: linear-gradient(-45deg, #E2F0F9, #B0D0E4, #DF4C73);*/
+    background-color: white;
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+/* layout.css or global css */
+.page-content {
+  padding-top: 100px;  /* SAME as header height */
 }
 
-/* ===== Navbar ===== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== Navbar (Floating Rounded Bar) ===== */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20px 40px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    position: fixed;
+    justify-content: space-around;
+    top: 0px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    /*border-radius: 50px;*/
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden; 
+    border-bottom: 3px solid #DF4C73; 
+    width: 100%;
+    /*max-width: 90%;*/
+    /*background: rgba(255, 255, 255, 0.2);*/
+    background-color: #ffffff;
 }
 
 .navbar h1 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(255,255,255,0.7);
+    color: #DF4C73; 
+    padding: 15px 30px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-shadow: none;
+    line-height: 1;
 }
 
-.navbar button {
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: none;
-  background:violet;
+.navbar-icons {
+    /* Icons/Lofi Section (Pink Background) */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Reduced gap */
+    padding: 15px 25px; /* Adjusted padding */
+    border-top-right-radius: 47px;
+    border-bottom-right-radius: 47px;
+}
+
+.nav-item {
+    /* Reset button defaults */
+    border: 2px solid,#4A4A4A;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    color:#4A4A4A;
+    padding: 0;
+    
+    /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    
+    /* Hover/Transition Setup */
+    position: relative; /* For the pop-up label */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Icon content sizing */
+.nav-icon-content {
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #4A4A4A;
+    transition: color 0.3s ease;
+}
+/* The Label (Hidden by default) */
+.nav-label {
+    position: absolute;
+    top: -25px; 
+    color: #DF4C73;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease-in-out;
+    pointer-events: none; /* Prevents label from interfering with clicks */
+}
+
+.nav-item:hover {
+  transform:  scale(1.1);
+  background-color: #DF4C73;
   color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+  border-color:white;
 }
-
-.navbar button:hover {
-  transform: scale(1.05);
-  background: violet;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+.nav-item:hover .nav-label {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== Main Content ===== */
 .main-content {
-  display: flex;
-  gap: 20px; /* space between dashboard and LoFi zone */
-  padding: 20px 40px;
+    padding: 40px 60px;
 }
 
-/* ===== Dashboard ===== */
-/* ===== Dashboard ===== */
-/* ===== Dashboard ===== */
+/* ===== Dashboard (Cards become Sections) ===== */
 .dashboard {
-  flex: 3;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px; 
-  padding: 0 60px; /* <-- ADD THIS LINE to make cards narrower */
-  justify-content: space-around;
-}
-
-/* ===== Cards ===== */
-.card {
-  height: 160px; /* <-- CHANGE THIS VALUE (e.g., from 200px to 160px) */
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(18px);
-  padding: 20px; /* Adjusted padding */
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  position: relative;
-  overflow: hidden;
-  
-  /* ADD THESE LINES FOR CENTERING */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-  background: rgba(255,255,255,0.2);
-}
-
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  animation: iconBounce 1.2s infinite alternate;
-}
-
-@keyframes iconBounce {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
-}
-
-.card-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-shadow: 0 0 6px rgba(255,255,255,0.5);
-}
-
-/* ===== LoFi Zone ===== */
-.lofi-zone {
-  flex: 1; /* smaller than dashboard */
-  min-width: 250px; /* ensures it doesn’t shrink too small */
-  max-width: 350px; /* optional */
-  background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWpmOWx1eHVweXdpMzdjZzZrOHJseDJoZjNtMDJhb2c5ZDNkNXppeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1hXY6iNdTFpTW4je85/giphy.gif') center/cover no-repeat;
-  border-radius: 12px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* player at bottom */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-/* MiniLoFi player inside the LoFi zone */
-.lofi-player {
-  background-color: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.lofi-player button {
-  margin: 0 0.3rem;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #444;
-  color: #fff;
-  transition: background 0.3s;
-}
-
-.lofi-player button:hover {
-  background-color: #666;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 1000px) {
-  .main-content {
+    display: flex;
     flex-direction: column;
-  }
-
-  .lofi-zone {
-    width: 100%;
-    min-width: auto;
-    max-width: none;
-    margin-top: 20px;
-  }
+    gap: 60px;
+    width:900px;
+    margin: 0 auto;
 }
-/* Tablet view (2 cards per row) */
-@media (max-width: 1000px) {
-  .dashboard {
-    grid-template-columns: repeat(2, 1fr);
+.card-section {
+    display: flex;
+    align-items: center;
+    padding: 35px; /* Increased padding */
+    border-radius: 30px; /* Increased radius for softer look */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 0; 
+    transform: translateY(30px); /* Increased initial displacement */
+}
+
+/* Scroll Animation Triggered Class (V1 retained) */
+.card-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-section:hover {
+    transform: translateY(-8px) scale(1.01);
+}
+
+/* Alternating Layout */
+.card-section.image-first {
+    flex-direction: row;
+}
+.card-section.text-first {
+    flex-direction: row-reverse;
+}
+
+/* Text and Image Containers (Removing flex property for uniform size) */
+.card-text {
+    width: 65%; /* Consistent width for text */
     padding: 0 30px;
-    gap: 30px;
-  }
+    box-sizing: border-box;
+    justify-content: center;
 }
 
-/* Mobile view (1 card per row) */
-@media (max-width: 600px) {
-  .dashboard {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 0 20px;
-    gap: 20px;
-  }
+.card-image-container {
+    width: 35%; /* Consistent width for image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-  .card {
-    height: 140px; /* slightly smaller for mobile */
-  }
+/* Cat Image Styling (Round) */
+.cat-image {
+    width: 160px; /* Slightly larger image */
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid; /* Thicker border */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
 
-  .navbar {
+.card-section:hover .cat-image {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Text Content */
+.card-title {
+    font-size: 2.5rem; /* Larger title */
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+/* ===== Section Styling (Large, Uniform Cards) ===== */
+/* ===== Color-Coding Sections ===== */
+
+/* Quizzes (DARK BACKGROUND - Image right) */
+.hquiz-card { 
+    background: #2A3644;
+    color: #FFFFFF; 
+}
+.hquiz-card .cat-image { 
+    border-color: #ffffff;
+}
+.hquiz-card .card-title { 
+    color: #FFFFFF; 
+}
+
+/* Journal (WHITE BACKGROUND - Image left) */
+.journal-card { 
+    background: #E2F0F9;
+    color:#4A4A4A;
+}
+.journal-card .cat-image { 
+    border-color: #4A4A4A;
+}
+.journal-card .card-title { 
+    color: #4A4A4A;
+}
+
+/* Mock Interviews (WHITE BACKGROUND - Image right) */
+.mock-card { 
+    background:#B0DDE4; 
+    color: white;
+}
+.mock-card .cat-image { 
+    border-color:white;
+}
+.mock-card .card-title { 
+    color:white;
+}
+
+/* Resume Checker (DARK BACKGROUND - Image left) */
+.resume-card { 
+    background:#286FB4;
+    color: #FFFFFF; 
+}
+.resume-card .cat-image { 
+    border-color: #FFFFFF;
+}
+.resume-card .card-title { 
+    color: #E2F0F9; 
+}
+/* ==================================== */
+/* ===== NEW: Personality Promo Section ===== */
+/* ==================================== */
+
+.personality-promo-section {
+    /* Use grid or flex to establish three columns */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    padding: 30px 40px; /* Reduced padding for wide layout */
+    width:800px;
+    margin: 0 auto;
+}
+.promo-left-text {
+    width: 35%; /* Takes up significant space */
+    color: #FFFFFF;
+    padding-right: 10px;
+}
+
+.left-promo-title {
+    font-size: 2.2rem; 
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+}
+.left-promo-title .underline-text {
+    border-bottom: 5px solid #DF4C73; /* Underline effect for emphasis */
+    padding-bottom: 3px;
+}
+
+/* --- COLUMN 2: CENTER IMAGE --- */
+.promo-center-image {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-image {
+    width: 100%;
+    max-width: 250px; /* Control image size */
+    height: auto;
+    object-fit: contain;
+}
+
+/* --- COLUMN 3: RIGHT CONTENT (Small, Gray) --- */
+.promo-right-content {
+    width: 35%;
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 15px 20px;
-  }
-
-  .navbar h1 {
-    font-size: 1.5rem;
-  }
-
-  .main-content {
-    padding: 10px;
-  }
+    justify-content: center;
+    align-items: flex-start; /* Align text to the left */
+    padding-left: 20px;
 }
 
+.right-promo-description {
+    font-size: 1.1rem;
+    color: #4A4A4A; /* Gray color */
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Reusing .promo-button style from previous definitions */
+.promo-button {
+    background-color: #DF4C73;
+    color: white;
+    width: auto;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+/* Reusing .pink-text for color highlighting */
+.pink-text {
+    color: #DF4C73; 
+}
+
+/* =============================== */
+/* Scroll Reveal – Smooth Pop Fade */
+/* =============================== */
+
+/* Initial hidden state */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+/* Visible state */
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Optional: staggered delay using nth-child */
+.reveal:nth-child(1) { transition-delay: 0.05s; }
+.reveal:nth-child(2) { transition-delay: 0.15s; }
+.reveal:nth-child(3) { transition-delay: 0.25s; }
+.reveal:nth-child(4) { transition-delay: 0.35s; }
+
+/* Slight fade-out when scrolling away (popular websites effect) */
+@media (prefers-reduced-motion: no-preference) {
+    .reveal {
+        transition-property: opacity, transform;
+    }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+    .personality-promo-section {
+        flex-direction: column; /* Stacks all three columns vertically */
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .promo-left-text, .promo-center-image, .promo-right-content {
+        width: 100%;
+        padding: 10px 0;
+        align-items: center;
+    }
+    .promo-center-image {
+        order: -1; /* Place image at the top on mobile */
+    }
+    .left-promo-title {
+        font-size: 1.8rem;
+    }
+    .promo-right-content {
+        align-items: center; /* Center buttons/text on mobile */
+    }
+    .promo-button {
+        width: 80%;
+    }
+}
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 900px) {
+    .card-section, .card-section.text-first, .card-section.image-first {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-text, .card-image-container {
+        width: 100%;
+        padding: 0;
+    }
+    .card-text {
+        padding-top: 20px;
+    }
+    .card-image-container {
+        order: -1; 
+    }
+    .navbar {
+        top: 20px;
+    }
+}

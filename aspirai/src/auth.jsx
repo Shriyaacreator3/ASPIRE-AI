@@ -1,4 +1,3 @@
-
 import "./style.css";
 import { auth, database, googleProvider } from "./firebase";
 import {signInWithEmailAndPassword, signInWithPopup} from "firebase/auth";
@@ -55,14 +54,22 @@ export const Login = () => {
      
   }
   return(
-    <div className="centered-page-container"> 
+    <div className="centered-page-container"style={{ backgroundColor: '#E2F0F9' }}> 
     <div className="login-container">
-    <h2>aspirAI 🚀</h2>
+    <h2 style={{ color: '#DF4C73', marginBottom: '10px' }}>aspirAI 🚀</h2>
     
       <input type="email" id="email" placeholder="✉ Email" required onChange={(e)=>setEmail(e.target.value)}/>
       <input type="password" id="password" placeholder="🔑 Password" required onChange={(e)=>setPassword(e.target.value)} />
       <button type="submit" onClick={ loginWithEmail }>Login</button>
-      <button type="submit" onClick={loginWithGoogle}>Login with Google</button>
+      <div className="separator"><span>OR</span></div>
+      <button className="google-btn" onClick={loginWithGoogle}>
+           <img 
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
+            alt="Google logo" 
+            className="google-logo"
+            />
+            <span>Login with Google</span>
+      </button>
         
        <p>
         Don't have an account?<Link to="/signup" >Sign up here</Link>

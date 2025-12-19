@@ -1,0 +1,183 @@
+/* ===== Stepper Layout & Container ===== */
+.outer-container {
+  display: flex;
+  min-height: 100vh; /* Changed from 100% to ensure full vertical centering */
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive aspect ratios for the card */
+@media (min-width: 640px) {
+  .outer-container {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 768px) {
+  .outer-container {
+    aspect-ratio: 2 / 1;
+  }
+}
+
+.step-circle-container {
+  background-color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 28rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(40, 111, 180, 0.1),
+              0 10px 10px -5px rgba(40, 111, 180, 0.04);
+  overflow: hidden; /* Prevents content from leaking out of rounded corners */
+}
+
+/* ===== Step Indicators (The Top Row) ===== */
+.step-indicator-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 2.5rem 2rem 1.5rem 2rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.step-indicator {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
+}
+
+.step-indicator-inner {
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.active-dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+}
+
+.step-number {
+  font-size: 0.875rem;
+}
+
+/* ===== The Connectors (The "String") ===== */
+.step-connector {
+  position: relative;
+  /* Fixed the overflow by reducing margins and using flex */
+  margin-left: 0.75rem; 
+  margin-right: 0.75rem;
+  height: 0.125rem;
+  flex: 1;
+  min-width: 10px;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background-color: #B0DDE4; /* Inactive color */
+}
+
+.step-connector-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  /* Progress color will be #286FB4 via Framer Motion */
+}
+
+/* ===== Content Area ===== */
+.step-content-default {
+  position: relative;
+  overflow: hidden;
+  min-height: 150px; /* Ensures card height doesn't collapse too much */
+}
+
+.step-default {
+  padding: 0 2.5rem;
+  text-align: center;
+}
+
+/* ===== Footer & Buttons ===== */
+.footer-container {
+  padding: 0 2rem 2.5rem 2rem;
+}
+
+.footer-nav {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-nav.spread {
+  justify-content: space-between;
+}
+
+.footer-nav.end {
+  justify-content: flex-end;
+}
+
+.back-button,
+.next-button {
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+ 
+.back-button:hover,
+.next-button:hover {
+  background-color: #FFFFFF;
+  color: #286FB4;
+  border-color: #286FB4;
+  transform: translateY(-1px);
+}
+
+/* SVG Icons */
+.check-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #FFFFFF;
+}
+
+/* ===== Mobile Responsive Fixes ===== */
+@media (max-width: 480px) {
+  .step-circle-container {
+    max-width: 95%;
+    border-radius: 1.5rem;
+  }
+
+  .step-indicator-row {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .step-connector {
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+  }
+
+  .step-indicator-inner {
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+
+  .step-default {
+    padding: 0 1.5rem;
+  }
+}

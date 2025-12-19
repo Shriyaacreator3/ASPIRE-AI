@@ -113,9 +113,6 @@ export default function Journal() {
   return (
     <div className="journal-container">
       <div className="header-container">
-        <Link to="/home" className="arrow-btn" aria-label="Back to home">
-          ←
-        </Link>
         <h2 className="journal-title">📝 Your Journal</h2>
       </div>
 
@@ -155,10 +152,10 @@ export default function Journal() {
       {savedMessage && <div className="journal-saved-msg">{savedMessage}</div>}
 
       <div className="view-all-container">
-        <Link to="/entries" className="nav-link-btn">
+        <Link to="/entries" className="jnav-link-btn">
           View All Entries
         </Link>
-        <Link to="/mood-trends" className="nav-link-btn" aria-label="Mood trends">
+        <Link to="/mood-trends" className="jnav-link-btn" aria-label="Mood trends">
           Mood Trends
         </Link>
       </div>

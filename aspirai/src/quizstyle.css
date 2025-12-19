@@ -1,191 +1,153 @@
-/* ===== Quiz Container (glassmorphism) ===== */
-.quiz-container {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
+/* --- Global Wrapper --- */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc; /* Neutral bg to let cards pop */
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Setup Card (standalone floating box) --- */
+.quiz-setup-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
   padding: 40px;
   border-radius: 20px;
-  width: 750px;
-  max-width: 95%;
-  margin: 40px auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-/* Heading */
-.quiz-title {
+  box-shadow: 0 10px 40px rgba(42, 54, 68, 0.1);
   text-align: center;
-  font-size: 2rem;
-  letter-spacing: 1px;
+  border: 1px solid #E2F0F9;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.quiz-title {
+  color: #2A3644;
   margin-bottom: 25px;
-  text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
+  font-weight: 700;
 }
 
-/* Progress Bar */
-.quiz-progress {
-  height: 14px;
-  background:rgba(255, 255, 255, 0.12);
-  border-radius: 7px;
-  overflow: hidden;
-  margin-bottom: 10px;
+.input-label {
+  text-align: left;
+  color: #2A3644;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-.quiz-progress-fill {
-  height: 100%;
-  background:violet;
-  transition: width 0.3s ease;
-}
-
-.quiz-progress-text {
-  text-align: right;
-  font-size: 0.9rem;
-  color: #f5f5f5;
+.role-input-field {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #E2F0F9;
+  border-radius: 12px;
+  font-size: 1rem;
   margin-bottom: 20px;
+  outline: none;
 }
-.quiz-score {
-  /* ... (any existing styles you have for this) ... */
-  margin-bottom: 30px; /* This adds the gap */
+
+.role-input-field:focus {
+  border-color: #B0DDE4;
 }
-/* Quiz Cards */
+
+.quiz-generate-btn {
+  width: 100%;
+  background-color: #2A3644;
+  color: #ffffff;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.quiz-generate-btn:hover {
+  transform: translateY(-2px);
+  background-color: #3d4f63;
+}
+
+/* --- Quiz View --- */
+.quiz-active-container {
+  width: 100%;
+  max-width: 750px;
+  animation: fadeIn 0.5s ease-out;
+}
+
 .quiz-card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 30px;
-  transition: transform 0.2s, box-shadow 0.3s;
-}
-
-.quiz-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(255,255,255,0.4);
-}
-
-/* Questions */
-.quiz-question {
-  font-size: 1 rem;
-  font-weight: bold;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
   margin-bottom: 20px;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  border: 1px solid #E2F0F9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
-/* Options */
-.quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.quiz-question {
+  color: #2A3644;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
 }
 
 .quiz-option {
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+  width: 100%;
   text-align: left;
+  padding: 12px 20px;
+  margin: 6px 0;
+  border: 2px solid #E2F0F9;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #2A3644;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.quiz-option:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(255,255,255,0.5);
+.quiz-option:hover:not(.disabled) {
+  background: #E2F0F9;
 }
 
 .quiz-option.selected {
-  background: grey;
-  font-weight: bold;
-  transform: scale(1.03);
+  background: #2A3644;
+  color: #ffffff;
+  border-color: #2A3644;
 }
-/* ... (all your existing CSS from the prompt) ... */
-
-/* ===== Answer States (After Submit) ===== */
 
 .quiz-option.correct {
-  background: rgba(40, 167, 69, 0.7); /* Green glass */
-  color: #fff;
-  font-weight: bold;
-  box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
-  transform: scale(1.03);
+  background: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
 }
 
 .quiz-option.incorrect {
-  background: rgba(220, 53, 69, 0.7); /* Red glass */
-  color: #fff;
-  font-weight: bold;
-  box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
-  opacity: 1; /* Make sure it's fully visible */
+  background: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
 }
-
-.quiz-option.disabled {
-  background: rgba(255, 255, 255, 0.05); /* Fade out */
-  color: #aaa;
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Ensure correct/incorrect override hover effects */
-.quiz-option.correct:hover,
-.quiz-option.incorrect:hover,
-.quiz-option.disabled:hover {
-  transform: none;
-  box-shadow: none;
-  background: unset; /* Prevents base class from overriding */
-}
-
-/* Re-apply correct/incorrect backgrounds after clearing hover */
-.quiz-option.correct {
-  background: rgba(40, 167, 69, 0.7);
-}
-.quiz-option.incorrect {
-  background: rgba(220, 53, 69, 0.7);
-}
-.quiz-option.disabled {
-  background: rgba(255, 255, 255, 0.05);
-}
-/* ... (all your existing styles) ... */
-
-/* --- NEW: Style for the "Next Quiz" Button --- */
-.quiz-next-btn {
-  display: block;
-  
-  margin: 15px auto 0;
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color:violet;
+.quiz-next-btn,
+.quiz-submit-btn {
+  width: 100%;
+  background-color: #B0DDE4;
+  color: #2A3644;
+  padding: 18px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
-.quiz-next-btn:hover {
-  background-color: violet;
+.change-btn {
+  background: #2A3644;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
-/* Fade-in effect */
+.change-btn:hover {
+  background: #B0DDE4;
+  box-shadow: none;
+}
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-/* Gradient animation */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Responsive */
-@media (max-width: 500px) {
-  .quiz-container {
-    width: 95%;
-    padding: 20px;
-  }
-  .quiz-title {
-    font-size: 1.6rem;
-  }
 }
